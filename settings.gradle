@@ -1,0 +1,2 @@
+rootProject.name='KinAndCartaChallenge'
+include ':app'

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="handler"
+            type="com.example.kinandcartachallenge.activity.main.MainActivity" />
+        <variable
+            name="viewmodel"
+            type="com.example.kinandcartachallenge.activity.main.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.main.MainActivity">
+
+        <include
+            android:id="@+id/progress_bar"
+            layout="@layout/loading"
+            android:visibility="@{viewmodel.loading ? View.VISIBLE : View.GONE}"
+            />
+
+        <include
+            android:id="@+id/conection_error"
+            layout="@layout/no_internet_conection"
+            android:visibility="@{viewmodel.conectionError ? View.VISIBLE : View.GONE}"/>
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_width="match_parent"
+            android:theme="@style/CustomToolbar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="@string/contacts"
+            >
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/refresh"
+            bind:refreshing="@{viewmodel.swipeLoading}"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/people_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{viewmodel.conectionError ? View.GONE : View.VISIBLE}"
+            />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

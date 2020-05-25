@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">KinAndCartaChallenge</string>
+    <string name="contacts">Contacts</string>
+    <string name="favorite_contacts">Favorite Contacts</string>
+    <string name="other_contacts">Others Contacts</string>
+    <string name="detail">Detail</string>
+
+    <string name="detail_phone">Phone:</string>
+    <string name="detail_home_phone">Home</string>
+    <string name="detail_mobile_phone">Mobile</string>
+    <string name="detail_work_phone">Work</string>
+    <string name="detail_address">Address:</string>
+    <string name="detail_birthdate">Birthdate:</string>
+    <string name="detail_mail">Email:</string>
+
+    <string name="network_error_title">No internet</string>
+    <string name="network_error_description">You haven\'t internet conection, try again!</string>
+</resources>

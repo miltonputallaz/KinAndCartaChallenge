@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/person_item_padding"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        android:id="@+id/person_image"
+        android:transitionName="person_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:adjustViewBounds="false"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatToggleButton
+        android:id="@+id/person_favorite"
+        android:transitionName="person_favorite"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/like_selector"
+        android:backgroundTint="?attr/defaultStarColor"
+        android:text="@null"
+        android:textOn="@null"
+        android:textOff="@null"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintRight_toLeftOf="@id/person_name"
+        app:layout_constraintLeft_toRightOf="@id/person_image"
+        app:layout_constraintBaseline_toBaselineOf="@id/person_name"
+        />
+
+    <TextView
+        android:id="@+id/person_name"
+        android:transitionName="person_name"
+        android:layout_width="wrap_content"
+        app:layout_constrainedWidth="true"
+        android:layout_height="match_parent"
+        android:textSize="@dimen/default_text_size"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/person_company_name"
+        app:layout_constraintLeft_toRightOf="@id/person_favorite"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+
+
+
+    <TextView
+        android:id="@+id/person_company_name"
+        android:transitionName="person_company_name"
+        android:layout_width="wrap_content"
+        app:layout_constrainedWidth="true"
+        android:layout_height="match_parent"
+        android:textSize="@dimen/default_text_size"
+        android:ellipsize="marquee"
+        app:layout_constraintTop_toBottomOf="@id/person_name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/person_image"
+        />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
