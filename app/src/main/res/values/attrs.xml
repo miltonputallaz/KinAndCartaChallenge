@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="defaultActivityBackground" format="reference"></attr>
-    <attr name="defaultTextAndIconsColor" format="reference"></attr>
-    <attr name="defaultTransparentBackground" format="reference"></attr>
-    <attr name="defaultDisabledButton" format="reference"></attr>
-    <attr name="defaultThemeLoading" format="reference"></attr>
-    <attr name="defaultStarColor" format="reference"></attr>
+    <attr name="defaultActivityBackground" format="reference"/>
+    <attr name="defaultTextAndIconsColor" format="reference"/>
+    <attr name="defaultTransparentBackground" format="reference"/>
+    <attr name="defaultDisabledButton" format="reference"/>
+    <attr name="defaultThemeLoading" format="reference"/>
+    <attr name="defaultStarColor" format="reference"/>
+    <attr name="colorSecondaryText" format="reference"/>
+    <attr name="grayDivider" format="reference"/>
 </resources>
