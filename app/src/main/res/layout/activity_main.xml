@@ -21,7 +21,7 @@
         <include
             android:id="@+id/progress_bar"
             layout="@layout/loading"
-            android:visibility="@{viewmodel.loading ? View.VISIBLE : View.GONE}"
+            android:visibility="@{viewmodel.isLoading ? View.VISIBLE : View.GONE}"
             />
 
         <include

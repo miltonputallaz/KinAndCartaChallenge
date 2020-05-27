@@ -10,6 +10,7 @@
     <string name="detail_mobile_phone">Mobile</string>
     <string name="detail_work_phone">Work</string>
     <string name="detail_address">Address:</string>
+    <string name="detail_address_string">%1$s\n%2$s %3$s, %4$s, %5$s</string>
     <string name="detail_birthdate">Birthdate:</string>
     <string name="detail_mail">Email:</string>
 

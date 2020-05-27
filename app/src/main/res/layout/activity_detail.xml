@@ -259,7 +259,7 @@
                     android:textStyle="bold"
                     android:textSize="@dimen/default_text_size"
                     android:layout_marginTop="@dimen/default_vertical_margin_small"
-                    android:text="@{viewmodel.person.address.street+' '+viewmodel.person.address.city+' '+viewmodel.person.address.state+' '+viewmodel.person.address.zipCode+' '+viewmodel.person.address.country}"
+                    android:text="@{@string/detail_address_string(viewmodel.person.address.street, viewmodel.person.address.city, viewmodel.person.address.state, viewmodel.person.address.zipCode,viewmodel.person.address.country)}"
                     app:layout_constraintTop_toBottomOf="@id/address_label"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintHorizontal_bias="0"/>

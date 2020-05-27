@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
@@ -31,8 +30,8 @@ class DetailActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this,R.layout.activity_detail)
         setUpToolbar()
         setUpBinding()
-        viewModel.person.value = intent.extras?.get(SELECTED_CONTACT) as Person
-        initialFavValue = (viewModel.person.value as Person).isFavorite
+        viewModel.setPerson(intent.extras?.get(SELECTED_CONTACT) as Person)
+        initialFavValue = viewModel.getPerson().value!!.isFavorite
     }
 
     private fun setUpToolbar(){
@@ -49,7 +48,7 @@ class DetailActivity : AppCompatActivity() {
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
         menu?.apply {
             val menuItem = findItem(R.id.favorite_menu)
-            menuItem.isChecked = viewModel.person.value!!.isFavorite
+            menuItem.isChecked = viewModel.getPerson().value!!.isFavorite
             setCorrectIcon(menuItem)
         }
         super.onPrepareOptionsMenu(menu)
@@ -67,7 +66,7 @@ class DetailActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.favorite_menu -> {
             item.isChecked = !item.isChecked
-            viewModel.person.value!!.isFavorite = !viewModel.person.value!!.isFavorite
+            viewModel.switchFavourite()
             setCorrectIcon(item)
             true
         }
@@ -83,10 +82,10 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun setFavResult() {
-        if (initialFavValue != (viewModel.person.value as Person).isFavorite) {
+        if (initialFavValue != viewModel.getPerson().value!!.isFavorite) {
             var data = Intent()
-            data.putExtra(PERSON_ID, viewModel.person.value!!.id)
-            data.putExtra(FAV_STATUS, viewModel.person.value!!.isFavorite)
+            data.putExtra(PERSON_ID, viewModel.getPerson().value!!.id)
+            data.putExtra(FAV_STATUS, viewModel.getPerson().value!!.isFavorite)
             setResult(Activity.RESULT_OK,data)
         }
         else

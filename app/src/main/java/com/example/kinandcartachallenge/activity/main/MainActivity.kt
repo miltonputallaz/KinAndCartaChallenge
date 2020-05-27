@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
             addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
             adapter = PeopleAdapter(listOf(), selectedHandler, getImageHandler)
-            viewModel.people.observe(binding.handler as MainActivity, Observer {
+            viewModel.getPeople().observe(binding.handler as MainActivity, Observer {
                 it?.apply {
                     (adapter as PeopleAdapter).setPeople(it)
                 }

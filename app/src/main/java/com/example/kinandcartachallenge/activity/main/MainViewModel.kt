@@ -20,12 +20,12 @@ fun refresherHandler(srLayout: SwipeRefreshLayout, isRefreshing: LiveData<Boolea
 
 class MainViewModel: ViewModel() {
 
-    val isLoading: MutableLiveData<Boolean> = MutableLiveData(false)
-    val people: MutableLiveData<List<Person>> by lazy {
+    private val isLoading: MutableLiveData<Boolean> = MutableLiveData(false)
+    private  val people: MutableLiveData<List<Person>> by lazy {
         MutableLiveData<List<Person>>()
     }
-    val conectionError: MutableLiveData<Boolean> = MutableLiveData(false)
-    val swipeLoading: MutableLiveData<Boolean> = MutableLiveData(false)
+    private val conectionError: MutableLiveData<Boolean> = MutableLiveData(false)
+    private val swipeLoading: MutableLiveData<Boolean> = MutableLiveData(false)
 
     @Inject
     lateinit var repository: PersonRepository
@@ -39,6 +39,23 @@ class MainViewModel: ViewModel() {
             showLoading(true)
             getPeopleFromRepo()
     }
+
+    fun getIsLoading():LiveData<Boolean>{
+        return isLoading
+    }
+
+    fun getConectionError():LiveData<Boolean>{
+        return conectionError
+    }
+
+    fun getSwipeLoading():LiveData<Boolean>{
+        return swipeLoading
+    }
+
+    fun getPeople(): LiveData<List<Person>>{
+        return people
+    }
+
 
     fun getPeopleFromRepo(){
         val success: (List<Person>) -> Unit = {
