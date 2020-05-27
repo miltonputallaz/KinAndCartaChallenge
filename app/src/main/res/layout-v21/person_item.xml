@@ -15,23 +15,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <androidx.appcompat.widget.AppCompatToggleButton
+    <ImageView
         android:id="@+id/person_favorite"
-        android:transitionName="person_favorite"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:background="@drawable/like_selector"
+        android:background="@drawable/ic_star_enabled"
         android:backgroundTint="?attr/defaultStarColor"
         android:text="@null"
-        android:textOn="@null"
         android:textOff="@null"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
+        android:textOn="@null"
+        app:layout_constraintBottom_toBottomOf="@+id/person_name"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintRight_toLeftOf="@id/person_name"
         app:layout_constraintLeft_toRightOf="@id/person_image"
-        app:layout_constraintBaseline_toBaselineOf="@id/person_name"
-        />
+        app:layout_constraintRight_toLeftOf="@id/person_name" />
 
     <TextView
         android:id="@+id/person_name"
@@ -40,6 +36,7 @@
         app:layout_constrainedWidth="true"
         android:layout_height="match_parent"
         android:textSize="@dimen/default_text_size"
+        android:text="asdasdasdsadasdasd"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/person_company_name"
         app:layout_constraintLeft_toRightOf="@id/person_favorite"

@@ -27,6 +27,7 @@ class PeopleAdapter(
     }
 
     private lateinit var rawItems: List<Person>
+
     private lateinit var favoritePeople: List<Person>
     private lateinit var notFavoritePeople: List<Person>
 
@@ -67,7 +68,7 @@ class PeopleAdapter(
         val name = view.person_name as TextView
         val company  = view.person_company_name as TextView
         val image = view.person_image as ImageView
-        val favorite = view.person_favorite as ToggleButton
+        val favorite = view.person_favorite as ImageView
 
     }
 
@@ -102,8 +103,6 @@ class PeopleAdapter(
             holder as ItemViewHolder
             with(rvItem.isFavorite){
                 if (this){
-                    holder.favorite.isChecked = this
-                    holder.favorite.isEnabled = false
                     holder.favorite.visibility = View.VISIBLE
                 } else {
                     holder.favorite.visibility = View.GONE
@@ -142,11 +141,11 @@ class PeopleAdapter(
     }
 
     fun updatePerson(personId: Int, favorite: Boolean){
-        var person = rawItems.find {
+        val person = rawItems.find {
             it.id == personId
         }
 
-        person!!.isFavorite = !person.isFavorite
+        (person as Person).isFavorite = favorite
         setPeople(rawItems)
     }
 

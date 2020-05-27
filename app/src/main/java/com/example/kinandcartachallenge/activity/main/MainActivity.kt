@@ -67,22 +67,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setUpRecyclerView(){
-        viewModel.people.observe(this, Observer {
-            it
-        })
+
         val viewManager = LinearLayoutManager(this)
         binding.peopleRecyclerview.apply {
             layoutManager = viewManager
-            addItemDecoration(
-                DividerItemDecoration(
-                    getContext(),
-                    DividerItemDecoration.VERTICAL
-                )
-            )
+            addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
-            adapter = PeopleAdapter(ArrayList(), selectedHandler, getImageHandler)
+            adapter = PeopleAdapter(listOf(), selectedHandler, getImageHandler)
             viewModel.people.observe(binding.handler as MainActivity, Observer {
-                it?.apply { (adapter as PeopleAdapter).setPeople(it) }
+                it?.apply {
+                    (adapter as PeopleAdapter).setPeople(it)
+                }
             })
         }
 

@@ -24,7 +24,7 @@ class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailBinding
     private lateinit var viewModel: DetailViewModel
-    private var somethingChanges: Boolean = false
+    private var initialFavValue: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,13 +32,13 @@ class DetailActivity : AppCompatActivity() {
         setUpToolbar()
         setUpBinding()
         viewModel.person.value = intent.extras?.get(SELECTED_CONTACT) as Person
+        initialFavValue = (viewModel.person.value as Person).isFavorite
     }
 
     private fun setUpToolbar(){
         setSupportActionBar(binding.toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -52,7 +52,6 @@ class DetailActivity : AppCompatActivity() {
             menuItem.isChecked = viewModel.person.value!!.isFavorite
             setCorrectIcon(menuItem)
         }
-
         super.onPrepareOptionsMenu(menu)
         return true
     }
@@ -67,7 +66,6 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.favorite_menu -> {
-            somethingChanges = true
             item.isChecked = !item.isChecked
             viewModel.person.value!!.isFavorite = !viewModel.person.value!!.isFavorite
             setCorrectIcon(item)
@@ -75,27 +73,29 @@ class DetailActivity : AppCompatActivity() {
         }
 
         android.R.id.home -> {
-            if (somethingChanges) {
-                var data = Intent()
-                data.putExtra(PERSON_ID, viewModel.person.value!!.id)
-                data.putExtra(FAV_STATUS, viewModel.person.value!!.isFavorite)
-                goBack(Activity.RESULT_OK, data)
-            }
-            else
-                goBack(Activity.RESULT_CANCELED,null)
+            onBackPressed()
             true
         }
 
         else -> {
-            // If we got here, the user's action was not recognized.
-            // Invoke the superclass to handle it.
             super.onOptionsItemSelected(item)
         }
     }
 
-    private fun goBack(code: Int, data: Intent?) {
-        setResult(code, data)
-        onBackPressed()
+    private fun setFavResult() {
+        if (initialFavValue != (viewModel.person.value as Person).isFavorite) {
+            var data = Intent()
+            data.putExtra(PERSON_ID, viewModel.person.value!!.id)
+            data.putExtra(FAV_STATUS, viewModel.person.value!!.isFavorite)
+            setResult(Activity.RESULT_OK,data)
+        }
+        else
+            setResult(Activity.RESULT_CANCELED,null)
+    }
+
+    override fun onBackPressed() {
+        setFavResult()
+        super.onBackPressed()
     }
 
     private fun setCorrectIcon(item: MenuItem){

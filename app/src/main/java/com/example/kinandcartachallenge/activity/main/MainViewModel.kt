@@ -22,7 +22,7 @@ class MainViewModel: ViewModel() {
 
     val isLoading: MutableLiveData<Boolean> = MutableLiveData(false)
     val people: MutableLiveData<List<Person>> by lazy {
-        MutableLiveData<List<Person>>(listOf())
+        MutableLiveData<List<Person>>()
     }
     val conectionError: MutableLiveData<Boolean> = MutableLiveData(false)
     val swipeLoading: MutableLiveData<Boolean> = MutableLiveData(false)
