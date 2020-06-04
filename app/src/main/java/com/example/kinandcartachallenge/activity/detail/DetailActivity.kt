@@ -19,6 +19,9 @@ class DetailActivity : AppCompatActivity() {
         const val REQUEST_CODE = 200
         const val PERSON_ID = "PERSON_ID"
         const val FAV_STATUS = "FAV_STATUS"
+        const val PERSON_IMAGE = "person_image"
+        const val PERSON_NAME = "person_name"
+        const val PERSON_COMPANY_NAME = "person_company_name"
     }
 
     private lateinit var binding: ActivityDetailBinding

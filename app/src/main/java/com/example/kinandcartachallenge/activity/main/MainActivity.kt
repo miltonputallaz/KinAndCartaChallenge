@@ -48,9 +48,9 @@ class MainActivity : AppCompatActivity() {
     private fun goToDetail(view: View, person: Person){
         val intent = Intent(this, DetailActivity::class.java)
         intent.putExtra(DetailActivity.SELECTED_CONTACT, person)
-        val p1 = Pair(view.person_image as View, "person_image")
-        val p2 = Pair(view.person_name as View, "person_name")
-        val p3 = Pair(view.person_company_name as View, "person_company_name")
+        val p1 = Pair(view.person_image as View, DetailActivity.PERSON_IMAGE)
+        val p2 = Pair(view.person_name as View, DetailActivity.PERSON_NAME)
+        val p3 = Pair(view.person_company_name as View, DetailActivity.PERSON_COMPANY_NAME)
         val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this,p1,p2,p3)
         startActivityForResult(intent, DetailActivity.REQUEST_CODE,options.toBundle())
     }
